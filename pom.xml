@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.blueskiron</groupId>
+    <artifactId>com.blueskiron-root</artifactId>
+    <version>1.1.0</version>
+  </parent>
+  <artifactId>vertx-kafka-playground</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <vertx.version>3.5.0</vertx.version>
+    <kafka.version>1.0.0</kafka.version>
+    <kryo.version>4.0.2</kryo.version>
+    <lombok.version>1.16.18</lombok.version>
+    <debezium.version>0.7.3</debezium.version>
+  </properties>
+
+  <dependencies>
+    <!-- code generation library don't include as dependency! -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-core</artifactId>
+      <version>${vertx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-kafka-client</artifactId>
+      <version>${vertx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.esotericsoftware</groupId>
+      <artifactId>kryo</artifactId>
+      <version>${kryo.version}</version>
+    </dependency>
+
+    <!-- TEST -->
+    <dependency>
+      <groupId>io.debezium</groupId>
+      <artifactId>debezium-core</artifactId>
+      <version>${debezium.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.12.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-unit</artifactId>
+      <version>${vertx.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>com.blueskiron-private-repo-RELEASES</id>
+      <name>com.blueskiron private maven repo releases</name>
+      <url>git:releases://git@gitlab.blueskiron.com:repos/com.blueskiron-private-repo.git</url>
+    </repository>
+    <snapshotRepository>
+      <id>com.blueskiron-private-repo-SNAPSHOTS</id>
+      <name>com.blueskiron private maven repo snapshots</name>
+      <url>git:snapshots://git@gitlab.blueskiron.com:repos/com.blueskiron-private-repo.git</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>synergian-repo</id>
+      <url>https://raw.github.com/synergian/wagon-git/releases</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>com.blueskiron-public-repo-RELEASES</id>
+      <url>https://raw.github.com/jurajzachar/com.blueskiron-public-repo.git/releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <!--releases -->
+    <repository>
+      <id>com.blueskiron-public-repo-RELEASES</id>
+      <name>com.blueskiron public maven repo releases</name>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <url>https://raw.githubusercontent.com/jurajzachar/com.blueskiron-public-repo/releases</url>
+    </repository>
+    <repository>
+      <id>com.blueskiron-private-repo-RELASES</id>
+      <name>com.blueskiron private maven repo releases</name>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <url>http://gitlab.blueskiron.com:1080/repos/com.blueskiron-private-repo/raw/releases</url>
+    </repository>
+    <!--snapshots -->
+    <repository>
+      <id>com.blueskiron-public-repo-SNAPSHOTS</id>
+      <name>com.blueskiron public maven repo snapshots</name>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <url>https://raw.githubusercontent.com/jurajzachar/com.blueskiron-public-repo/snapshots</url>
+    </repository>
+    <repository>
+      <id>com.blueskiron-private-repo-SNAPSHOTS</id>
+      <name>com.blueskiron private maven repo snapshots</name>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <url>http://gitlab.blueskiron.com:1080/repos/com.blueskiron-private-repo/raw/snapshots</url>
+    </repository>
+  </repositories>
+</project>
